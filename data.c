@@ -68,7 +68,7 @@ int main(void)
 		printf("\n");
 	}
 
-	fptr = fopen("/sdcard/CompScience/database.txt", "w");
+	fptr = fopen("/data/data/com.termux/files/home/database.txt", "w");
 
 	// Testing the file if its opened
 	if (fptr == 0)
@@ -81,7 +81,13 @@ int main(void)
 	fprintf(fptr, "***\nHere is the collection of all your employee:***s\n\n");
 	for (int m = 0; m < employee[ctr2]->noEmpl; m++)
 	{
-		fprintf(fptr, ""); // Coming up with the content
+		for (i = 0; i < employee[ctr2]->noEmpl; i++)
+		{
+			fprintf(fptr, "\n%s", employee[ctr2]->fullname);
+		}
+		fprintf(fptr, "\n");
+
+		// Some more code to follow soon
 	}
 	fclose(fptr); // Closing the file
  }	
