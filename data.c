@@ -10,7 +10,7 @@ FILE *fptr;	// Defines a file pointer
 
 typedef struct {
 	char fullname[50];		//Full names
-	int addr;		// The address
+	char addr;		// The address
 	float salary;	// Salaries
 	int id;		// Employees' ID numbers
 	int noEmpl;	// Number of emlployees
@@ -22,22 +22,22 @@ int main(void)
 	int ctr2 = 0;
 	int i, j, k, l;
 	
-	 database *employee[80];
+	 database *employee[100];
 
 	// Prompts the valid number of employees
 	// limited to 150
 	do
 	{
 		printf("Enter the total number of employees: ");
-		scanf("%i", &employee[ctr2]->noEmpl);
+		scanf("%d", &employee[ctr2]->noEmpl);
 	}
-	while ((employee[ctr]->noEmpl <= 0) || (employee[ctr]->noEmpl > 150));
+	while ((employee[ctr]->noEmpl <= 0) && (employee[ctr]->noEmpl > 150));
 
 	// Capitalize every first character of emlployees' names
 	employee[ctr2]->fullname[0] = toupper(employee[ctr]->fullname[0]);
 
 	// Prompts all employee names
-	for (i = 0; i < employee[ctr2]->noEmpl; i++)
+	for (i = 0; i < employee[ctr]->noEmpl; i++)
 	{
 		printf("%d) Employee: ", ctr++);
 		fgets(employee[i]->fullname, 50, stdin);
@@ -61,17 +61,18 @@ int main(void)
 	}
 
 	// Get addresses
+	printf("\nFor example: Alice Road, 58442\n");
 	for (l = 0; l < employee[ctr2]->noEmpl; l++)
 	{
 		printf("Address for %s: ", employee[ctr2]->fullname);
-		scanf("%i", &employee[l]->addr);
+		scanf("%s", &employee[l]->addr);
 		printf("\n");
 	}
 
 	fptr = fopen("/data/data/com.termux/files/home/database.txt", "w");
 
 	// Testing the file if its opened
-	if (fptr == 0)
+	if (fptr == NULL)
 	{
 		printf("Error! File could not be opened.\n");
 		exit (1);
